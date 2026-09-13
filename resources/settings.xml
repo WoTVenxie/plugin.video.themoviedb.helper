@@ -587,6 +587,42 @@
                     <control type="toggle" />
                 </setting>
             </group>
+            <group id="9" label="FlickList">
+                <setting id="flicklist_token" type="string" label="FlickList Token" help="">
+                    <level>0</level>
+                    <default/>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <visible>false</visible>
+                    <enable>false</enable>
+                    <control type="edit" format="string">
+                        <heading>FlickList Token</heading>
+                    </control>
+                </setting>
+                <setting id="authenticate_flicklist" type="action" label="Authenticate FlickList" help="">
+                    <level>0</level>
+                    <data>RunScript(plugin.video.themoviedb.helper,authenticate_flicklist)</data>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <control type="button" format="action">
+                        <close>true</close>
+                    </control>
+                </setting>
+                <setting id="flicklist_token_stored_at" type="string" label="FlickList Token Stored At" help="">
+                    <level>0</level>
+                    <default/>
+                    <constraints>
+                        <allowempty>true</allowempty>
+                    </constraints>
+                    <visible>false</visible>
+                    <enable>false</enable>
+                    <control type="edit" format="string">
+                        <heading>FlickList Token Stored At</heading>
+                    </control>
+                </setting>
+            </group>
         </category>
         <category id="accounts" label="32403" help="">
             <group id="2" label="5">
