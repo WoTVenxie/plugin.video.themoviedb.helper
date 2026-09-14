@@ -189,8 +189,7 @@ class FlickListSyncItemData(SyncItemData):
         return self.get_paused_at()
 
     def get_paused_at(self):
-        if self.item.get('paused'):
-            return self.item.get('updated_at')
+        return self.item.get('updated_at') if self.item.get('paused') else None
 
     """
     status
