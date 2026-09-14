@@ -310,6 +310,7 @@ class FlickListSyncItem(SyncItem):
         'progress',
         'updated_at',
         'paused',
+        'paused_at',
         'added_at',
         'started_at',
         'completed_at',
