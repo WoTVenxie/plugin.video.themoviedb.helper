@@ -75,13 +75,29 @@ class SyncLastActivities(SyncDataParentProperties):
         except AttributeError:
             mdblist_data = {}
 
-        if not data and not mdblist_data:
+        try:
+            flicklist_data = self.flicklist_api.request('/sync/last_activities') or {}
+        except AttributeError:
+            flicklist_data = {}
+
+        if not data and not mdblist_data and not flicklist_data:
             return
 
-        data = self.update_data_with_mdblist_activities(data, mdblist_data)
+        data = self.update_data_with_mdblist_activities(
+            data,
+            mdblist_data
+        )
+
+        data = self.update_data_with_flicklist_activities(
+            data,
+            flicklist_data
+        )
 
         data['expiry'] = set_timestamp(LASTACTIVITIES_EXPIRY)
-        self.window.get_property(LASTACTIVITIES_DATA, set_property=data_dumps(data))
+        self.window.get_property(
+            LASTACTIVITIES_DATA,
+            set_property=data_dumps(data)
+        )
 
         return data
 
@@ -90,10 +106,30 @@ class SyncLastActivities(SyncDataParentProperties):
         for setting, keys in MDBLIST_SETTINGS.items():
             if get_setting(setting, 'str') != 'MDbList':
                 continue
+
             for item_type in ('movies', 'shows', 'seasons', 'episodes'):
                 activity_key = keys.get('default')
-                activity_utc = mdblist_data.get(keys.get(item_type) or activity_key)
+                activity_utc = mdblist_data.get(
+                    keys.get(item_type) or activity_key
+                )
+
                 data.setdefault(item_type, {})[activity_key] = activity_utc
+
+        return data
+
+    @staticmethod
+    def update_data_with_flicklist_activities(data, flicklist_data):
+        if not flicklist_data:
+            return data
+
+        for item_type in ('movies', 'shows', 'seasons', 'episodes'):
+            activity = flicklist_data.get(item_type)
+
+            if not activity:
+                continue
+
+            data.setdefault(item_type, {}).update(activity)
+
         return data
 
     def is_expired(self, timestamp, keys=None):
