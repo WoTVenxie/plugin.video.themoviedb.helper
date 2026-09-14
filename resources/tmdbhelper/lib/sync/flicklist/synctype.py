@@ -13,7 +13,7 @@ class SyncWatched(FlickListDataTypeEpisodesInShows):
         'last_watched_at',
         'reset_at',
     )
-    last_activities_key = 'watched_at'
+    last_activities_key = 'last_watched_at'
     method = 'watched'
 
 
