@@ -172,6 +172,17 @@ class FlickListSyncItemData(SyncItemData):
         return self.item.get('paused')
 
     """
+    paused_at
+    """
+    @cached_property
+    def paused_at(self):
+        return self.get_paused_at()
+
+    def get_paused_at(self):
+        if self.item.get('paused'):
+            return self.item.get('updated_at')
+
+    """
     status
     """
     @cached_property
