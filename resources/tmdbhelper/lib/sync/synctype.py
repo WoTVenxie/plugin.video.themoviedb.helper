@@ -1,6 +1,7 @@
 from tmdbhelper.lib.addon.plugin import get_setting
 import tmdbhelper.lib.sync.trakt.synctype as trakt_synctype
 import tmdbhelper.lib.sync.mdblist.synctype as mdblist_synctype
+import tmdbhelper.lib.sync.flicklist.synctype as flicklist_synctype
 
 
 def SyncHiddenProgressWatched():
@@ -26,6 +27,8 @@ def SyncHiddenDropped():
 
 
 def SyncRatings():
+    if get_setting('sync_source_ratings', 'str') == 'FlickList':
+        return flicklist_synctype.SyncRatings
     return trakt_synctype.SyncRatings
 
 
@@ -40,8 +43,14 @@ def SyncAllNextEpisodes():
 
 
 def SyncWatchlist():
-    if get_setting('sync_source_watchlist', 'str') == 'MDbList':
+    source = get_setting('sync_source_watchlist', 'str')
+
+    if source == 'MDbList':
         return mdblist_synctype.SyncWatchlist
+
+    if source == 'FlickList':
+        return flicklist_synctype.SyncWatchlist
+
     return trakt_synctype.SyncWatchlist
 
 
@@ -52,8 +61,14 @@ def SyncCollection():
 
 
 def SyncPlayback():
-    if get_setting('sync_source_playback', 'str') == 'MDbList':
+    source = get_setting('sync_source_playback', 'str')
+
+    if source == 'MDbList':
         return mdblist_synctype.SyncPlayback
+
+    if source == 'FlickList':
+        return flicklist_synctype.SyncPlayback
+
     return trakt_synctype.SyncPlayback
 
 
@@ -64,8 +79,14 @@ def SyncNextEpisodes():
 
 
 def SyncWatched():
-    if get_setting('sync_source_watched', 'str') == 'MDbList':
+    source = get_setting('sync_source_watched', 'str')
+
+    if source == 'MDbList':
         return mdblist_synctype.SyncWatched
+
+    if source == 'FlickList':
+        return flicklist_synctype.SyncWatched
+
     return trakt_synctype.SyncWatched
 
 
