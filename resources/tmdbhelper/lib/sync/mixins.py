@@ -17,3 +17,7 @@ class SyncDataParentProperties:
     @property
     def mdblist_api(self):
         return self.instance_syncdata.mdblist_api
+
+    @property
+    def flicklist_api(self):
+        return self.instance_syncdata.flicklist_api
