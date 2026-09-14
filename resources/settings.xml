@@ -114,7 +114,7 @@
                     </constraints>
                     <control type="spinner" format="string"/>
                 </setting>
-                <setting id="force_english_plot_fallback" type="boolean" label="32349" help="32350">
+                <setting id="force_english_plot_fallback" type="boolean" label="32349" help="">
                     <level>0</level>
                     <default>false</default>
                     <control type="toggle"/>
@@ -188,6 +188,7 @@
                 </setting>
             </group>
         </category>
+
         <category id="widgets" label="32092" help="">
             <group id="1" label="32092">
                 <setting id="widgets_nextpage" type="boolean" label="32081" help="">
@@ -239,6 +240,7 @@
                 </setting>
             </group>
         </category>
+
         <category id="library" label="14022" help="">
             <group id="1" label="32074">
                 <setting id="movies_library" type="path" label="342" help="">
@@ -370,6 +372,7 @@
                 </setting>
             </group>
         </category>
+
         <category id="api keys" label="32017" help="">
             <group id="1" label="32029">
                 <setting id="omdb_apikey" type="string" label="32001" help="">
@@ -518,9 +521,9 @@
                 <setting id="tmdb_user_token_access" type="boolean" label="32483" help="" parent="">
                     <level>0</level>
                     <default>false</default>
-                    <control type="toggle"/>
-                    <visible>false</visible>
-                    <enable>false</enable>
+                    <control type="edit" format="string">
+                        <heading>32011</heading>
+                    </control>
                 </setting>
             </group>
             <group id="8" label="32470">
@@ -624,6 +627,7 @@
                 </setting>
             </group>
         </category>
+
         <category id="accounts" label="32403" help="">
             <group id="2" label="5">
                 <setting id="trakt_watchedindicators" type="boolean" label="32013" help="">
@@ -655,6 +659,7 @@
                     </constraints>
                     <control type="spinner" format="string"/>
                 </setting>
+
                 <setting id="sync_source_watchlist" type="string" label="32193" help="32417">
                     <level>0</level>
                     <default>Trakt</default>
@@ -667,6 +672,7 @@
                     </constraints>
                     <control type="spinner" format="string"/>
                 </setting>
+
                 <setting id="sync_source_collection" type="string" label="32192" help="32417">
                     <level>0</level>
                     <default>Trakt</default>
@@ -678,6 +684,7 @@
                     </constraints>
                     <control type="spinner" format="string"/>
                 </setting>
+
                 <setting id="sync_source_playback" type="string" label="14086" help="32417">
                     <level>0</level>
                     <default>Trakt</default>
@@ -690,8 +697,21 @@
                     </constraints>
                     <control type="spinner" format="string"/>
                 </setting>
+
+                <setting id="sync_source_ratings" type="string" label="Ratings Sync Source" help="32417">
+                    <level>0</level>
+                    <default>Trakt</default>
+                    <constraints>
+                        <options>
+                            <option>Trakt</option>
+                            <option>FlickList</option>
+                        </options>
+                    </constraints>
+                    <control type="spinner" format="string"/>
+                </setting>
             </group>
         </category>
+
         <category id="players" label="32014" help="">
             <group id="1" label="32033">
                 <setting id="default_player_movies" type="string" label="32024" help="">
@@ -786,6 +806,7 @@
                 </setting>
             </group>
         </category>
+
         <category id="details" label="32080" help="">
             <group id="1" label="32436">
                 <setting id="provider_allowlist" type="string" label="32437" help="">
@@ -849,14 +870,7 @@
                 <setting id="pagemulti_sync" type="integer" label="32083" help="">
                     <level>0</level>
                     <default>1</default>
-                    <constraints>
-                        <minimum>1</minimum>
-                        <step>1</step>
-                        <maximum>3</maximum>
-                    </constraints>
-                    <control type="slider" format="integer">
-                        <popup>false</popup>
-                    </control>
+                    <control type="slider" format="string"/>
                 </setting>
             </group>
             <group id="3" label="10106">
@@ -965,6 +979,7 @@
                 </setting>
             </group>
         </category>
+
         <category id="expert" label="10039" help="">
             <group id="1" label="32351">
                 <setting id="dummy_duration" type="string" label="32352" help="">
