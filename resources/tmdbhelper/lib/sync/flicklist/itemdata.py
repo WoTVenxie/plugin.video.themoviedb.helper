@@ -58,7 +58,10 @@ class FlickListSyncItemData(SyncItemData):
         try:
             return self.item[self.parent_item_type]['ids']['tmdb']
         except (AttributeError, KeyError, TypeError):
-            return
+            try:
+                return self.item['ids']['tmdb']
+            except (AttributeError, KeyError, TypeError):
+                return
 
     """
     flicklist_id
