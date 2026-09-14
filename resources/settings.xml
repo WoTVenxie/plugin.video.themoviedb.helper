@@ -650,6 +650,7 @@
                         <options>
                             <option>Trakt</option>
                             <option>MDbList</option>
+                            <option>FlickList</option>
                         </options>
                     </constraints>
                     <control type="spinner" format="string"/>
