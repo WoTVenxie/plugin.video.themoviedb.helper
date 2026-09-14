@@ -81,6 +81,13 @@ class Script(object):
         'revoke_trakt':
             lambda **kwargs: importmodule('tmdbhelper.lib.script.method.trakt', 'revoke_trakt')(**kwargs),
 
+        # FlickList Utils
+
+        'authenticate_flicklist':
+            lambda **kwargs: importmodule('tmdbhelper.lib.script.method.flicklist', 'authenticate_flicklist')(**kwargs),
+       'test_flicklist':
+            lambda **kwargs: importmodule('tmdbhelper.lib.script.method.flicklist', 'test_flicklist')(**kwargs),
+
         # Modify Functions
         'modify_identifier':
             lambda **kwargs: importmodule('tmdbhelper.lib.script.method.modify_identifier', 'modify_identifier')(**kwargs),
