@@ -20,7 +20,7 @@ class SyncWatched(FlickListDataTypeEpisodesInShows):
 class SyncPlayback(FlickListDataTypeShowsToEpisodes):
     keys = (
         'progress',
-        'paused',
+        'paused_at',
         'id',
     )
     last_activities_key = 'updated_at'
