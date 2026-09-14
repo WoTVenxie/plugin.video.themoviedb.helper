@@ -331,6 +331,7 @@ class SyncData(SyncDataGetters):
     def __init__(self, trakt_api=None, mdblist_api=None):
         self.trakt_api = trakt_api
         self.mdblist_api = mdblist_api
+        self.flicklist_api = flicklist_api
 
     @cached_property
     def routes(self):
@@ -397,9 +398,15 @@ def SyncDataFactory(parent=None):
         from tmdbhelper.lib.api.mdblist.api import MDbListAPI
         mdblist_api = MDbListAPI()
 
-    if not trakt_api and not mdblist_api:
+    try:
+        flicklist_api = parent.flicklist_api
+    except AttributeError:
+        from tmdbhelper.lib.api.flicklist.api import FlickListAPI
+        flicklist_api = FlickListAPI()
+
+    if not trakt_api and not mdblist_api and not flicklist_api:
         return
     # if not trakt_api.is_authorized:  # TODO: Allow MDBLIST ONLY  # AUTHORIZED CHECK MDBLIST
     #     return
 
-    return SyncData(trakt_api=trakt_api, mdblist_api=mdblist_api)
+    return SyncData(trakt_api=trakt_api, mdblist_api=mdblist_api, flicklist_api=flicklist_api)
