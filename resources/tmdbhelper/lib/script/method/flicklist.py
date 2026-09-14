@@ -144,3 +144,30 @@ def test_flicklist(**kwargs):
             'Authentication successful',
             time=5000
         )
+
+
+def test_flicklist_activities(**kwargs):
+    from tmdbhelper.lib.addon.logger import kodi_log
+
+    api = FlickListAPI()
+
+    if not api.is_authenticated():
+        Dialog().notification(
+            'FlickList',
+            'Not authenticated',
+            time=5000
+        )
+        return
+
+    response = api.last_activities()
+
+    kodi_log(
+        'FlickList last_activities: {}'.format(response),
+        1
+    )
+
+    Dialog().notification(
+        'FlickList',
+        'Last activities written to Kodi log',
+        time=5000
+    )
