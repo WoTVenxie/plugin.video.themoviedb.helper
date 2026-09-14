@@ -10,19 +10,16 @@ class CommonContainerAPIs():
     @cached_property
     def tmdb_api(self):
         from tmdbhelper.lib.api.tmdb.api import TMDb
-
         return TMDb()
 
     @cached_property
     def tmdb_imagepath(self):
         from tmdbhelper.lib.api.tmdb.images import TMDbImagePath
-
         return TMDbImagePath()
 
     @cached_property
     def trakt_api(self):
         from tmdbhelper.lib.api.trakt.api import TraktAPI
-
         return TraktAPI()
 
     @cached_property
@@ -38,19 +35,16 @@ class CommonContainerAPIs():
     @cached_property
     def tvdb_api(self):
         from tmdbhelper.lib.api.tvdb.api import TVDb
-
         return TVDb()
 
     @cached_property
     def mdblist_api(self):
         from tmdbhelper.lib.api.mdblist.api import MDbListAPI
-
         return MDbListAPI()
 
     @cached_property
     def flicklist_api(self):
         from tmdbhelper.lib.api.flicklist.api import FlickListAPI
-
         return FlickListAPI()
 
     @cached_property
@@ -66,5 +60,4 @@ class CommonContainerAPIs():
     @cached_property
     def query_database(self):
         from tmdbhelper.lib.query.database.database import FindQueriesDatabase
-
         return FindQueriesDatabase()
