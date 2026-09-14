@@ -340,7 +340,12 @@ class FlickListSyncItemData(SyncItemData):
         return self.get_next_episode_aired_at()
 
     def get_next_episode_aired_at(self):
-        return self.item.get('next_air_date')
+        air_date = self.item.get('next_air_date')
+
+        if not air_date:
+            return
+
+        return f'{air_date}T00:00:00.000Z'
 
 
 class FlickListSyncItemConstructor(SyncItemConstructor):
