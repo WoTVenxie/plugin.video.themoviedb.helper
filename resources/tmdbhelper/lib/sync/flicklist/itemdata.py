@@ -161,7 +161,7 @@ class FlickListSyncItemData(SyncItemData):
     def get_updated_at(self):
         return self.item.get('updated_at')
 
-     """
+    """
     id
     """
     @cached_property
