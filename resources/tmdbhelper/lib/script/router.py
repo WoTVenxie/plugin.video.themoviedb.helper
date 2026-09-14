@@ -82,11 +82,12 @@ class Script(object):
             lambda **kwargs: importmodule('tmdbhelper.lib.script.method.trakt', 'revoke_trakt')(**kwargs),
 
         # FlickList Utils
-
         'authenticate_flicklist':
             lambda **kwargs: importmodule('tmdbhelper.lib.script.method.flicklist', 'authenticate_flicklist')(**kwargs),
-       'test_flicklist':
+        'test_flicklist':
             lambda **kwargs: importmodule('tmdbhelper.lib.script.method.flicklist', 'test_flicklist')(**kwargs),
+        'test_flicklist_activities':
+            lambda **kwargs: importmodule('tmdbhelper.lib.script.method.flicklist', 'test_flicklist_activities')(**kwargs),
 
         # Modify Functions
         'modify_identifier':
@@ -100,7 +101,7 @@ class Script(object):
         'image_colors':
             lambda **kwargs: importmodule('tmdbhelper.lib.script.method.image_functions', 'image_colors')(**kwargs),
         'genre_fanart':
-            lambda **kwargs: importmodule('tmdbhelper.lib.script.method.image_functions', 'genre_fanart')(**kwargs),
+            lambda **kwargs: importmodule('tmdbhelper.lib.script.method.genre_fanart', 'genre_fanart')(**kwargs),
 
         # User Configuration
         'provider_allowlist':
@@ -126,9 +127,7 @@ class Script(object):
         'user_list':
             lambda **kwargs: importmodule('tmdbhelper.lib.script.method.library', 'add_user_list')(**kwargs),
         'library_autoupdate':
-            lambda **kwargs: importmodule('tmdbhelper.lib.script.method.library', 'run_autoupdate')(**kwargs),
-        'monitor_userlist':
-            lambda **kwargs: importmodule('tmdbhelper.lib.update.monitor', 'MonitorUserLists')().multiselect_update(),
+            lambda **kwargs: importmodule('tmdbhelper.lib.update.monitor', 'MonitorUserLists').multiselect_update(),
 
         # Window Management
         'add_path':
