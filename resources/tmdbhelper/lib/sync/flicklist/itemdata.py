@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from jurialmunkey.ftools import cached_property
+from tmdbhelper.lib.addon.tmdate import get_timestamp
 from tmdbhelper.lib.sync.itemdata import SyncItemData, SyncItem
 from tmdbhelper.lib.sync.itemconf import SyncItemConstructor
 
@@ -136,6 +137,13 @@ class FlickListSyncItemData(SyncItemData):
     """
     @cached_property
     def rated_at(self):
+        return self.item.get('rated_at')
+
+    """
+    rated_at
+    """
+    @cached_property
+    def rated_at(self):
         return self.get_rated_at()
 
     def get_rated_at(self):
@@ -172,7 +180,15 @@ class FlickListSyncItemData(SyncItemData):
         return self.get_id()
 
     def get_id(self):
-        return 0
+        updated_at = self.item.get('updated_at')
+
+        if not updated_at:
+            return
+
+        try:
+            return get_timestamp(updated_at, set_int=True)
+        except (AttributeError, TypeError, ValueError):
+            return
 
     """
     paused
@@ -240,8 +256,8 @@ class FlickListSyncItemData(SyncItemData):
         except (AttributeError, KeyError, TypeError):
             try:
                 return self.item['title']
-            except (AttributeError, KeyError, TypeError):
-                return
+        except (AttributeError, KeyError, TypeError):
+            return
 
     """
     media_type
@@ -289,9 +305,6 @@ class FlickListSyncItemData(SyncItemData):
     @cached_property
     def completed_at(self):
         return self.get_completed_at()
-
-    def get_completed_at(self):
-        return self.item.get('completed_at')
 
 
 class FlickListSyncItemConstructor(SyncItemConstructor):
