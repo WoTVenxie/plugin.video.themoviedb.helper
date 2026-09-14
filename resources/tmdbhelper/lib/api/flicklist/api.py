@@ -1,4 +1,3 @@
-```python
 import time
 
 from tmdbhelper.lib.addon.plugin import get_setting, set_setting
@@ -108,4 +107,3 @@ class FlickListAPI:
 
     def up_next(self):
         return self.request('/sync/up_next')
-```
