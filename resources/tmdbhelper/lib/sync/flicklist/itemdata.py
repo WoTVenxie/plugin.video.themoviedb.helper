@@ -123,6 +123,16 @@ class FlickListSyncItemData(SyncItemData):
         return self.item.get('reset_at')
 
     """
+    listed_at
+    """
+    @cached_property
+    def listed_at(self):
+        return self.get_listed_at()
+
+    def get_listed_at(self):
+        return self.item.get('added_at')
+
+    """
     rating
     """
     @cached_property
@@ -249,8 +259,8 @@ class FlickListSyncItemData(SyncItemData):
         except (AttributeError, KeyError, TypeError):
             try:
                 return self.item['title']
-        except (AttributeError, KeyError, TypeError):
-            return
+            except (AttributeError, KeyError, TypeError):
+                return
 
     """
     media_type
@@ -298,6 +308,9 @@ class FlickListSyncItemData(SyncItemData):
     @cached_property
     def completed_at(self):
         return self.get_completed_at()
+
+    def get_completed_at(self):
+        return self.item.get('completed_at')
 
 
 class FlickListSyncItemConstructor(SyncItemConstructor):
