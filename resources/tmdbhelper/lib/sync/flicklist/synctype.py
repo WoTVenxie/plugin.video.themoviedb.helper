@@ -21,7 +21,7 @@ class SyncPlayback(FlickListDataTypeShowsToEpisodes):
     keys = (
         'progress',
         'paused',
-        'updated_at',
+        'id',
     )
     last_activities_key = 'updated_at'
     method = 'playback'
