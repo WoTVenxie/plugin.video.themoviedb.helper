@@ -319,6 +319,7 @@ class FlickListSyncItem(SyncItem):
         'rated_at',
         'progress',
         'updated_at',
+        'id',
         'paused',
         'paused_at',
         'added_at',
