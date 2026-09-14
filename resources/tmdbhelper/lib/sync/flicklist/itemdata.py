@@ -149,7 +149,10 @@ class FlickListSyncItemData(SyncItemData):
         return self.get_progress()
 
     def get_progress(self):
-        return self.item.get('progress')
+        progress = self.item.get('progress')
+        if progress is None:
+            return
+        return float(progress) / 100.0
 
     """
     updated_at
