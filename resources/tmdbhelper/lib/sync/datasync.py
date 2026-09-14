@@ -328,7 +328,7 @@ class SyncDataGetters:
 
 class SyncData(SyncDataGetters):
 
-    def __init__(self, trakt_api=None, mdblist_api=None):
+    def __init__(self, trakt_api=None, mdblist_api=None, flicklist_api=None):
         self.trakt_api = trakt_api
         self.mdblist_api = mdblist_api
         self.flicklist_api = flicklist_api
