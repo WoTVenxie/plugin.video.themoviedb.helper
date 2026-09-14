@@ -172,7 +172,7 @@ class FlickListSyncItemData(SyncItemData):
         return self.get_id()
 
     def get_id(self):
-        return self.item.get('updated_at')
+        return 0
 
     """
     paused
