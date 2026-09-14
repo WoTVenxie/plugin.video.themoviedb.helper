@@ -21,7 +21,7 @@ class FlickListDataType(DataType):
         )
 
     def get_response_sync_data(self, *args, **kwargs):
-        endpoint = '/{}'.format(self.method)
+        endpoint = '/sync/{}'.format(self.method)
 
         if self.method == 'watched':
             if self.item_type == 'movie':
