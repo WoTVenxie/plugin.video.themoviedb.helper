@@ -312,6 +312,36 @@ class FlickListSyncItemData(SyncItemData):
     def get_completed_at(self):
         return self.item.get('completed_at')
 
+    """
+    next_episode_id
+    """
+    @cached_property
+    def next_episode_id(self):
+        return self.get_next_episode_id()
+
+    def get_next_episode_id(self):
+        season = self.item.get('next_season_number')
+        episode = self.item.get('next_episode_number')
+
+        if season is None or episode is None or not self.tmdb_id:
+            return
+
+        return 'tv.{}.{}.{}'.format(
+            self.tmdb_id,
+            season,
+            episode
+        )
+
+    """
+    next_episode_aired_at
+    """
+    @cached_property
+    def next_episode_aired_at(self):
+        return self.get_next_episode_aired_at()
+
+    def get_next_episode_aired_at(self):
+        return self.item.get('next_air_date')
+
 
 class FlickListSyncItemConstructor(SyncItemConstructor):
     item_data_class = FlickListSyncItemData
@@ -342,6 +372,8 @@ class FlickListSyncItem(SyncItem):
         'added_at',
         'started_at',
         'completed_at',
+        'next_episode_id',
+        'next_episode_aired_at',
     )
 
     def get_data(self):
