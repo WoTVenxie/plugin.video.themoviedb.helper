@@ -137,13 +137,6 @@ class FlickListSyncItemData(SyncItemData):
     """
     @cached_property
     def rated_at(self):
-        return self.item.get('rated_at')
-
-    """
-    rated_at
-    """
-    @cached_property
-    def rated_at(self):
         return self.get_rated_at()
 
     def get_rated_at(self):
@@ -160,7 +153,7 @@ class FlickListSyncItemData(SyncItemData):
         progress = self.item.get('progress')
         if progress is None:
             return
-        return float(progress) / 100.0
+        return int(float(progress))
 
     """
     updated_at
