@@ -1,3 +1,4 @@
+```python
 import time
 
 from tmdbhelper.lib.addon.plugin import get_setting, set_setting
@@ -30,6 +31,10 @@ class FlickListAPI:
             method=method,
             data=data
         )
+
+    # ------------------------------------------------------------------
+    # Authentication
+    # ------------------------------------------------------------------
 
     def device_code(self):
         return request_json(
@@ -81,5 +86,26 @@ class FlickListAPI:
     def is_authenticated(self):
         return bool(self.token)
 
+    # ------------------------------------------------------------------
+    # Account
+    # ------------------------------------------------------------------
+
     def me(self):
         return self.request('/me')
+
+    # ------------------------------------------------------------------
+    # Sync
+    # ------------------------------------------------------------------
+
+    def last_activities(self):
+        return self.request('/sync/last_activities')
+
+    def watched_movies(self):
+        return self.request('/sync/watched/movies')
+
+    def watched_shows(self):
+        return self.request('/sync/watched/shows')
+
+    def up_next(self):
+        return self.request('/sync/up_next')
+```
