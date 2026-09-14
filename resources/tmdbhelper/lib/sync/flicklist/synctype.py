@@ -39,11 +39,7 @@ class SyncRatings(FlickListDataType):
 
 class SyncWatchlist(FlickListDataType):
     keys = (
-        'status',
-        'progress',
-        'added_at',
-        'started_at',
-        'completed_at',
+        'listed_at',
     )
     last_activities_key = 'added_at'
     method = 'watchlist'
