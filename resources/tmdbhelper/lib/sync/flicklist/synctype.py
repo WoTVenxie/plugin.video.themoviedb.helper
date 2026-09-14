@@ -51,7 +51,7 @@ class SyncUpNext(FlickListDataTypeShowsToEpisodes):
         'next_episode_id',
         'next_episode_aired_at',
     )
-    last_activities_key = 'watched_at'
+    last_activities_key = 'last_watched_at'
     method = 'up_next'
     expiry_time = HALFDAY_EXPIRY
 
